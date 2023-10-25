@@ -32,6 +32,8 @@ namespace FrontEndEvaluacionAcademia.NET
 
 			builder.Services.AddAuthorization();
 
+			builder.Services.AddSession();
+
 			var app = builder.Build();
 
 			// Configure the HTTP request pipeline.
@@ -51,6 +53,8 @@ namespace FrontEndEvaluacionAcademia.NET
 			app.UseAuthorization();
 
 			app.UseAuthorization();
+
+			app.UseSession();
 
 			app.MapControllerRoute(
 				name: "default",

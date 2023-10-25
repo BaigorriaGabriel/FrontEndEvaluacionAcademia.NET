@@ -1,4 +1,4 @@
-﻿namespace TpIntegradorSofttekFrontEnd.ViewModels
+﻿namespace FrontEndEvaluacionAcademia.NET.ViewModels
 {
     public class HomeViewModel
     {

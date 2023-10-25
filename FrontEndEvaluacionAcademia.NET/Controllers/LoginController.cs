@@ -7,7 +7,7 @@ using System.Net.Http;
 using System.Security.Claims;
 using Newtonsoft.Json;
 using FrontEndEvaluacionAcademia.NET.Models;
-using TpIntegradorSofttekFrontEnd.ViewModels;
+using FrontEndEvaluacionAcademia.NET.ViewModels;
 
 namespace FrontEndEvaluacionAcademia.NET.Controllers
 {
@@ -46,7 +46,10 @@ namespace FrontEndEvaluacionAcademia.NET.Controllers
 				ExpiresUtc = DateTime.Now.AddDays(1),
 			});
 
-			var homeViewModel = new HomeViewModel();
+
+            HttpContext.Session.SetString("Token", resultadoObjeto.Token);
+
+            var homeViewModel = new HomeViewModel();
 			homeViewModel.CodeUser = resultadoObjeto.CodeUser;
 			homeViewModel.Name = resultadoObjeto.Name;
 			homeViewModel.Token = resultadoObjeto.Token;

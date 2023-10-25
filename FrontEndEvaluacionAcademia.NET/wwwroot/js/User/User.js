@@ -1,5 +1,5 @@
-﻿var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ3ZWJBcGlTdWJqZWN0IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZW1haWxhZGRyZXNzIjoiZ2FiaS4yOTEyQGhvdG1haWwuY29tIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiIxIiwiZXhwIjoxNjk4ODY0NTQyfQ.F5MxYOAmXUzFNIMWylHBoROxz_WGWcAvMDLxRwtn9Iw";
-//var token = getCookie("Token");
+﻿//var token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ3ZWJBcGlTdWJqZWN0IiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvZW1haWxhZGRyZXNzIjoiZ2FiaS4yOTEyQGhvdG1haWwuY29tIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZWlkZW50aWZpZXIiOiIxIiwiZXhwIjoxNjk4ODY0NTQyfQ.F5MxYOAmXUzFNIMWylHBoROxz_WGWcAvMDLxRwtn9Iw";
+var token = getCookie("Token");
 
 let table = new DataTable('#Users', {
 
@@ -26,3 +26,18 @@ let table = new DataTable('#Users', {
     ]
 
 });
+
+
+function Register() {
+    $.ajax({
+        type: "POST",
+        url: "/Users/UsersAddPartial",
+        data: "",
+        contentType: 'application/json',
+        'dataType': "html",
+        success: function (resultado) {
+            $('#UsersAddPartial').html(resultado);
+            $('#userModal').modal('show');
+        }
+    });
+}
