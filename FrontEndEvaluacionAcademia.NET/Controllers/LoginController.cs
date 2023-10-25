@@ -7,6 +7,7 @@ using System.Net.Http;
 using System.Security.Claims;
 using Newtonsoft.Json;
 using FrontEndEvaluacionAcademia.NET.Models;
+using TpIntegradorSofttekFrontEnd.ViewModels;
 
 namespace FrontEndEvaluacionAcademia.NET.Controllers
 {
@@ -31,21 +32,32 @@ namespace FrontEndEvaluacionAcademia.NET.Controllers
 			var resultadoLogin = token as OkObjectResult;
 			var resultadoObjeto = JsonConvert.DeserializeObject<UserLogin>(resultadoLogin.Value.ToString());
 
-			//var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme, ClaimTypes.Name, ClaimTypes.Role);
+			var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme, ClaimTypes.Name, ClaimTypes.Role);
 
-			//Claim claimRole = new(ClaimTypes.Role, "Administrador");
+			Claim claimRole = new(ClaimTypes.Role, "Administrador");
 
-			//identity.AddClaim(claimRole);
+			identity.AddClaim(claimRole);
 
 
-			//var claimPrincipal = new ClaimsPrincipal(identity);
+			var claimPrincipal = new ClaimsPrincipal(identity);
 
-			//await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimPrincipal, new AuthenticationProperties
-			//{
-			//	ExpiresUtc = DateTime.Now.AddDays(1),
-			//});
+			await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, claimPrincipal, new AuthenticationProperties
+			{
+				ExpiresUtc = DateTime.Now.AddDays(1),
+			});
 
-			return View("~/Views/Home/Index.cshtml", resultadoObjeto);
+			var homeViewModel = new HomeViewModel();
+			homeViewModel.CodeUser = resultadoObjeto.CodeUser;
+			homeViewModel.Name = resultadoObjeto.Name;
+			homeViewModel.Token = resultadoObjeto.Token;
+
+			return View("~/Views/Home/Index.cshtml", homeViewModel);
+		}
+
+		public async Task<IActionResult> CerrarSession()
+		{
+			await HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+			return RedirectToAction("Login", "Login");
 		}
 	}
 }

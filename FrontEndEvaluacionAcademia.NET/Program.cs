@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
+
 namespace FrontEndEvaluacionAcademia.NET
 {
 	public class Program
@@ -14,6 +16,22 @@ namespace FrontEndEvaluacionAcademia.NET
 				config.BaseAddress = new Uri(builder.Configuration["ServiceUrl:ApiUrl"]);
 			});
 
+			builder.Services.AddAuthentication(options =>
+			{
+				options.DefaultSignInScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+				options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+				options.DefaultChallengeScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+			}).AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, config =>
+			{
+				config.Events.OnRedirectToLogin = context =>
+				{
+					context.Response.Redirect("https://localhost:7214");
+					return Task.CompletedTask;
+				};
+			});
+
+			builder.Services.AddAuthorization();
+
 			var app = builder.Build();
 
 			// Configure the HTTP request pipeline.
@@ -28,6 +46,9 @@ namespace FrontEndEvaluacionAcademia.NET
 			app.UseStaticFiles();
 
 			app.UseRouting();
+
+			app.UseAuthentication();
+			app.UseAuthorization();
 
 			app.UseAuthorization();
 

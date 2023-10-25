@@ -1,9 +1,11 @@
 ﻿using FrontEndEvaluacionAcademia.NET.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace FrontEndEvaluacionAcademia.NET.Controllers
 {
+	[Authorize]
 	public class HomeController : Controller
 	{
 		private readonly ILogger<HomeController> _logger;
