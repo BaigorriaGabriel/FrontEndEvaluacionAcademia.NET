@@ -21,23 +21,22 @@ namespace FrontEndEvaluacionAcademia.NET.Controllers
 			return View();
 		}
 
-        public async Task<IActionResult> UsersAddPartial()////[FromBody] UserDto userDto)
+        public async Task<IActionResult> UsersAddPartial([FromBody] UserDto userDto)
         {
             //// LO QUE ESTA CON 4 / DESCOMENTAR
             //var roleId = HttpContext.Session.GetInt32("RoleId");
 
-            ////var userViewModel = new UserViewModel();
+            var userViewModel = new UserViewModel();
 
-            ////if (userDto != null)
-            ////{
-            ////    userViewModel = userDto;
-            ////}
+            if (userDto != null)
+            {
+                userViewModel = userDto;
+            }
 
 
-            ////var homeViewModel = new HomeViewModel();
-            //homeViewModel.RoleId = (int)roleId;
+            var homeViewModel = new HomeViewModel();
 
-            return PartialView("~/Views/Users/Partial/UsersAddPartial.cshtml");////, userViewModel);
+            return PartialView("~/Views/Users/Partial/UsersAddPartial.cshtml", userViewModel);
             //deberia hacer un if en el UserAddPartial.cshtml para identificar si se modifica o se agrega un usuario?
         }
 
@@ -46,6 +45,22 @@ namespace FrontEndEvaluacionAcademia.NET.Controllers
             var token = HttpContext.Session.GetString("Token");
             var baseApi = new BaseApi(_httpClient);
             var users = baseApi.PostToApi("User/Register", user, token);
+            return View("~/Views/Users/Users.cshtml");
+        }
+
+        public IActionResult UpdateUser(UserDto user)
+        {
+            UserForUpdateDto userForUpdateDto = new UserForUpdateDto();
+
+            userForUpdateDto.Name = user.Name;
+            userForUpdateDto.Email = user.Email;
+            userForUpdateDto.Dni = user.Dni;
+            userForUpdateDto.Password = user.Password;
+
+
+            var token = HttpContext.Session.GetString("Token");
+            var baseApi = new BaseApi(_httpClient);
+            var users = baseApi.PutToApi($"User/Update/{user.CodUser}", userForUpdateDto, token);
             return View("~/Views/Users/Users.cshtml");
         }
 

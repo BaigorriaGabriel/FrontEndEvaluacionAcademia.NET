@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 
 namespace Data.DTOs
 {
-    public  class UserDto
+    public  class UserForUpdateDto
     {
-        public int CodUser { get; set; }
         public string Name { get; set; }
+
         public string Dni { get; set; }
         public string Email { get; set; }
+        public int RoleId { get; set; }
         public string Password { get; set; }
+
+        //public string? Role { get; set; }
     }
 }

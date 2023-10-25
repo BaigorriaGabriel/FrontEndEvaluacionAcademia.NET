@@ -15,14 +15,14 @@ let table = new DataTable('#Users', {
         { data: 'name', title: 'Nombre' },
         { data: 'email', title: 'Email' },
         { data: 'dni', title: 'DNI' },
-        //{
-        //    data: function (data) {
-        //        var butons =
-        //            `<td><a href='javascript:UpdateUser(${JSON.stringify(data)})'><i class="fa-solid fa-pen-to-square editarUsuario"></i></td>` +
-        //            `<td><a href='javascript:DeleteUser(${JSON.stringify(data)})'><i class="fa-solid fa-trash eliminarUsuario"></i></td>`
-        //        return butons;
-        //    }
-        //}
+        {
+            data: function (data) {
+                var butons =
+                    `<td><a href='javascript:UpdateUser(${JSON.stringify(data)})'><i class="fa-solid fa-pen-to-square editarUsuario"></i></td>` +
+                    `<td><a href='javascript:DeleteUser(${JSON.stringify(data)})'><i class="fa-solid fa-trash eliminarUsuario"></i></td>`
+                return butons;
+            }
+        }
     ]
 
 });
@@ -39,5 +39,35 @@ function Register() {
             $('#UsersAddPartial').html(resultado);
             $('#userModal').modal('show');
         }
+    });
+}
+
+function UpdateUser(data) {
+    $.ajax({
+        type: "PUT",
+        url: "/Users/UsersAddPartial",
+        data: JSON.stringify(data),
+        contentType: 'application/json',
+        'dataType': "html",
+        success: function (resultado) {
+            $('#UsersAddPartial').html(resultado);
+            $('#userModal').modal('show');
+        }
+
+    });
+}
+
+function DeleteUser(data) {
+    $.ajax({
+        type: "DELETE",
+        url: "/Users/UsersAddPartial",
+        data: JSON.stringify(data),
+        contentType: 'application/json',
+        'dataType': "html",
+        success: function (resultado) {
+            $('#UsersAddPartial').html(resultado);
+            $('#userDeleteModal').modal('show');
+        }
+
     });
 }
