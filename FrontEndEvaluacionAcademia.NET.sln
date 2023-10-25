@@ -5,6 +5,8 @@ VisualStudioVersion = 17.7.34018.315
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontEndEvaluacionAcademia.NET", "FrontEndEvaluacionAcademia.NET\FrontEndEvaluacionAcademia.NET.csproj", "{2A97A582-495A-4E65-A31E-956CB4F64CCF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Data", "Data\Data.csproj", "{7D7AAD41-EDDA-43EA-B674-EF58CE8F0140}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{2A97A582-495A-4E65-A31E-956CB4F64CCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2A97A582-495A-4E65-A31E-956CB4F64CCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2A97A582-495A-4E65-A31E-956CB4F64CCF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7D7AAD41-EDDA-43EA-B674-EF58CE8F0140}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D7AAD41-EDDA-43EA-B674-EF58CE8F0140}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D7AAD41-EDDA-43EA-B674-EF58CE8F0140}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D7AAD41-EDDA-43EA-B674-EF58CE8F0140}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

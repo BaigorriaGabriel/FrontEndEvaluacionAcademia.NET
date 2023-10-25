@@ -9,6 +9,11 @@ namespace FrontEndEvaluacionAcademia.NET
 			// Add services to the container.
 			builder.Services.AddControllersWithViews();
 
+			builder.Services.AddHttpClient("useApi", config =>
+			{
+				config.BaseAddress = new Uri(builder.Configuration["ServiceUrl:ApiUrl"]);
+			});
+
 			var app = builder.Build();
 
 			// Configure the HTTP request pipeline.
@@ -28,7 +33,7 @@ namespace FrontEndEvaluacionAcademia.NET
 
 			app.MapControllerRoute(
 				name: "default",
-				pattern: "{controller=Home}/{action=Index}/{id?}");
+				pattern: "{controller=Login}/{action=Login}/{id?}");
 
 			app.Run();
 		}
