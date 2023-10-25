@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34018.315
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrontEndEvaluacionAcademia.NET", "FrontEndEvaluacionAcademia.NET\FrontEndEvaluacionAcademia.NET.csproj", "{2A97A582-495A-4E65-A31E-956CB4F64CCF}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2A97A582-495A-4E65-A31E-956CB4F64CCF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A97A582-495A-4E65-A31E-956CB4F64CCF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A97A582-495A-4E65-A31E-956CB4F64CCF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A97A582-495A-4E65-A31E-956CB4F64CCF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {267FF59E-EEBE-4926-A2B7-1D6A1FB1B8EA}
+	EndGlobalSection
+EndGlobal
