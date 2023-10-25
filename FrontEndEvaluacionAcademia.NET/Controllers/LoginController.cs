@@ -30,6 +30,13 @@ namespace FrontEndEvaluacionAcademia.NET.Controllers
 			var baseApi = new BaseApi(_httpClientFactory);
 			var token = await baseApi.PostToApi("Login", login);
 			var resultadoLogin = token as OkObjectResult;
+
+			if (resultadoLogin == null) {
+                ViewBag.CredencialesIncorrectas = true;
+                return View("Login");
+
+			}
+
 			var resultadoObjeto = JsonConvert.DeserializeObject<UserLogin>(resultadoLogin.Value.ToString());
 
 			var identity = new ClaimsIdentity(CookieAuthenticationDefaults.AuthenticationScheme, ClaimTypes.Name, ClaimTypes.Role);

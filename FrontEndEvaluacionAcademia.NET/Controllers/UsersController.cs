@@ -64,5 +64,13 @@ namespace FrontEndEvaluacionAcademia.NET.Controllers
             return View("~/Views/Users/Users.cshtml");
         }
 
+        public IActionResult DeleteUser(UserDto user)
+        {
+            var token = HttpContext.Session.GetString("Token");
+            var baseApi = new BaseApi(_httpClient);
+            var users = baseApi.DeleteToApi($"User/Delete/{user.CodUser}", user, token);
+            return View("~/Views/Users/Users.cshtml");
+        }
+
     }
 }
