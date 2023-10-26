@@ -35,7 +35,13 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Users" asp-action="Users">Usuarios</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Wallets" asp-action="Wallets">Billeteras Virtuales</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Login" asp-action="CerrarSession">Cerrar Session</a>
+                        </li>
+                        <li class="nav-item">
+                            <span class="nav-link">@Context.Session.GetString("UserName")</span>
                         </li>
                     </ul>
                 </div>

@@ -8,6 +8,7 @@ using System.Security.Claims;
 using Newtonsoft.Json;
 using FrontEndEvaluacionAcademia.NET.Models;
 using FrontEndEvaluacionAcademia.NET.ViewModels;
+using Microsoft.AspNetCore.Http;
 
 namespace FrontEndEvaluacionAcademia.NET.Controllers
 {
@@ -55,6 +56,12 @@ namespace FrontEndEvaluacionAcademia.NET.Controllers
 
 
             HttpContext.Session.SetString("Token", resultadoObjeto.Token);
+
+            string UserName = resultadoObjeto.Name;
+            HttpContext.Session.SetString("UserName", UserName);
+
+            string CodeUser = resultadoObjeto.CodeUser.ToString();
+            HttpContext.Session.SetString("CodeUser", CodeUser);
 
             var homeViewModel = new HomeViewModel();
 			homeViewModel.CodeUser = resultadoObjeto.CodeUser;

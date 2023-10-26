@@ -23,7 +23,6 @@ namespace FrontEndEvaluacionAcademia.NET.Controllers
 
         public async Task<IActionResult> UsersAddPartial([FromBody] UserDto userDto)
         {
-            //// LO QUE ESTA CON 4 / DESCOMENTAR
             //var roleId = HttpContext.Session.GetInt32("RoleId");
 
             var userViewModel = new UserViewModel();
@@ -37,7 +36,6 @@ namespace FrontEndEvaluacionAcademia.NET.Controllers
             var homeViewModel = new HomeViewModel();
 
             return PartialView("~/Views/Users/Partial/UsersAddPartial.cshtml", userViewModel);
-            //deberia hacer un if en el UserAddPartial.cshtml para identificar si se modifica o se agrega un usuario?
         }
 
         public IActionResult Register(UserDto user)
